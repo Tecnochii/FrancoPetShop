@@ -1,10 +1,9 @@
 *{
     margin: 0;
     padding: 0;
-}
-body{
     
 }
+
 /*Header*/
 header{
     display: flex;
@@ -80,7 +79,7 @@ width: 10vw;
 }
 
 .cards .card{
-    height: 40vw;
+    height: 43vw;
     max-width: 25vw;
     margin:1vw;
     padding: 1vw;
@@ -93,14 +92,19 @@ width: 10vw;
 
 .card-title{
     text-align: center;
+    
 }
 
 .precio{
 font-weight: bold;
+font-family: 'Pattaya', sans-serif;
+padding-top: 1vw;
 }
 
 .stock{
+    padding-top: 1vw;
     font-weight: bold;
+    font-family: 'Pattaya', sans-serif;
 }
 
 .card-price{
