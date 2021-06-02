@@ -58,6 +58,7 @@ width: 10vw;
 .formAbuelo{
     display: flex;
     justify-content: center;
+   height: 40vw;
 }
 
 .cards img{
@@ -120,4 +121,28 @@ font-weight: bold;
 .boton-comprar button:hover{
     box-shadow: -1px 15px 10px grey ;
     
+}
+/*Footer*/
+
+footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 5vw;
+   
+}
+footer div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(131, 128, 128, 0.5) ;
+    width: 90vw;
+}
+footer div p{
+    font-family: 'Pattaya', sans-serif;
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-top: 1vw;
+}
+footer img{
+    width: 8vw;
 }
