@@ -44,49 +44,58 @@
             </div>
         </div>
         <main>
-            <div class="formAbuelo">
-                <div class="formulario">
-                    <form class="formContent">
+            <div>
+                <div class="formAbuelo">
+                    <div class="formulario">
+                        <form class="formContent">
 
-                        <div class="mb-3">
-                            <label for="name">Nombre</label>
-                            <input class="form-control" type="text" id="name" value="" placeholder="ej: Roberto Carlos"
-                                required>
-                            <label for="tel">Telefono</label>
-                            <input class="form-control" type="text" id="tel" placeholder="ej: 1585681458" required>
-                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="name@example.com" required>
-                        </div>
-                        <div>
-                            <span>Su Mascota es:</span}>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1" required>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Perro
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault2" required>
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Gato
-                                    </label>
+                            <div class="mb-3">
+                                <label for="name">Nombre</label>
+                                <input class="form-control" type="text" id="name" value=""
+                                    placeholder="ej: Roberto Carlos" required>
+                                <label for="tel">Telefono</label>
+                                <input class="form-control" type="text" id="tel" placeholder="ej: 1585681458" required>
+                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="name@example.com" required>
+                            </div>
+                            <div>
+                                <span>Su Mascota es:</span}>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault1" required>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Perro
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2" required>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            Gato
+                                        </label>
 
-                                </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="Consulta"></textarea>
-                        </div>
-                        <button @click="AlertaSubmit">Enviar</button>
-                    </form>
+                                    </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Comentarios</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    placeholder="Consulta"></textarea>
+                            </div>
+                            <button @click="AlertaSubmit">Enviar</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
+    <footer>
+        <div>
+            <p>Emmanuel Leiva</p>
+            <a href="https://github.com/Tecnochii" target="blank"><img
+                    src="https://miro.medium.com/max/719/1*WaaXnUvhvrswhBJSw4YTuQ.png" alt=""></a>
+        </div>
+    </footer>
     <!-- Boostrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
