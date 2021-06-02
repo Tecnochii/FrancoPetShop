@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    
+}
+/*Header*/
+header{
+    display: flex;
+    align-items: center;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: black;
+}
+
+header .fs-4{
+    font-family: 'Pattaya', sans-serif;
+}
+
+header img{
+width: 10vw;
+}
+
+.flecha{
+    width: 10vh;
+    position: absolute;
+    right: 13vw;
+    top: 12vh;
+    z-index: 1;
+}
+/*Main*/
+.fotoIndex{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.fotoIndex img{
+    max-width: 48vw;
+}
+
+.formContent{
+    display: flex;
+    width: 55vw;
+    flex-direction: column;
+    padding: 2vw;
+
+}
+
+.formulario{
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 1%;
+}
+
+.formAbuelo{
+    display: flex;
+    justify-content: center;
+}
+
+.cards img{
+    max-width: 20vw;
+}
+
+.cards p{
+    max-width: 20vw;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.cards .card:hover{
+    box-shadow:  10px 10px 10px 10px black;
+    
+}
+
+.cards .card{
+    height: 40vw;
+    max-width: 25vw;
+    margin:1vw;
+    padding: 1vw;
+    border: 2px solid;
+}
+
+.cards .card-body{
+    overflow: auto;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.precio{
+font-weight: bold;
+}
+
+.stock{
+    font-weight: bold;
+}
+
+.card-price{
+    display: flex;
+    justify-content: space-between;
+}
+
+.boton-comprar{
+    padding: 1vw;
+    align-self: center;
+  
+}
+
+.boton-comprar button{
+    background-color: black;
+}
+
+.boton-comprar button:hover{
+    box-shadow: -1px 15px 10px grey ;
+    
+}
