@@ -2,8 +2,13 @@
     margin: 0;
     padding: 0;
 }
-body{
-    
+
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: white;
 }
 /*Header*/
 header{
@@ -31,6 +36,11 @@ width: 10vw;
     z-index: 1;
 }
 /*Main*/
+.btn-outline-secondary{
+    background-color: black;
+    color: white;
+}
+
 .fotoIndex{
     display: flex;
     justify-content: center;
@@ -58,15 +68,16 @@ width: 10vw;
 .formAbuelo{
     display: flex;
     justify-content: center;
-   height: 40vw;
+min-height: 80vh;
 }
 
 .cards img{
-    max-width: 20vw;
+    max-width: 100vw;
+    height: 40vh;
 }
 
 .cards p{
-    max-width: 20vw;
+    max-height: 20vw;
 }
 .cards{
     display: flex;
@@ -79,29 +90,37 @@ width: 10vw;
     
 }
 
-.cards .card{
-    height: 40vw;
-    max-width: 25vw;
+ .cards .card{
+    height: 80vh;
     margin:1vw;
     padding: 1vw;
     border: 2px solid;
-}
+    min-width: 30vw;
+} 
 
 .cards .card-body{
     overflow: auto;
+    
 }
 
 .card-title{
     text-align: center;
+    
 }
 
 .precio{
 font-weight: bold;
+font-family: 'Pattaya', sans-serif;
+padding-top: 1vw;
 }
 
 .stock{
+    padding-top: 1vw;
     font-weight: bold;
+    font-family: 'Pattaya', sans-serif;
 }
+
+
 
 .card-price{
     display: flex;
@@ -111,7 +130,7 @@ font-weight: bold;
 .boton-comprar{
     padding: 1vw;
     align-self: center;
-  
+  display: flex;
 }
 
 .boton-comprar button{
@@ -130,19 +149,28 @@ footer{
     margin-top: 5vw;
    
 }
+
+
+
 footer div{
     display: flex;
     align-items: center;
     justify-content: center;
     border-top: 1px solid rgb(131, 128, 128, 0.5) ;
-    width: 90vw;
+    width: 50vw;
 }
-footer div p{
+
+footer div button{
+    border: none;
+}
+
+footer p{
     font-family: 'Pattaya', sans-serif;
-    font-size: 1.5vw;
+    font-size: 1vw;
     font-weight: bold;
     margin-top: 1vw;
 }
+
 footer img{
-    width: 8vw;
+    width: 4vw;
 }
