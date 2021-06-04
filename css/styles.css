@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -266,3 +267,174 @@ padding:0 4vw;
     box-shadow: none;
 }
 
+=======
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+/*Header*/
+header{
+    display: flex;
+    align-items: center;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: black;
+}
+
+header .fs-4{
+    font-family: 'Pattaya', sans-serif;
+}
+
+header img{
+width: 10vw;
+}
+
+.flecha{
+    width: 10vh;
+    position: absolute;
+    right: 13vw;
+    top: 12vh;
+    z-index: 1;
+}
+/*Main*/
+.btn-outline-secondary{
+    background-color: black;
+    color: white;
+}
+
+.fotoIndex{
+    display: flex;
+    justify-content: center;
+   
+}
+
+.fotoIndex img{
+    max-width: 48vw;
+}
+
+.formContent{
+    display: flex;
+    width: 55vw;
+    flex-direction: column;
+    padding: 2vw;
+
+}
+
+.formulario{
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    border-radius: 1%;
+}
+
+.formAbuelo{
+    display: flex;
+    justify-content: center;
+min-height: 80vh;
+}
+
+.cards img{
+    max-width: 20vw;
+}
+
+.cards p{
+    max-height: 20vw;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.cards .card:hover{
+    box-shadow:  10px 10px 10px 10px black;
+    
+}
+
+.cards .card{
+    height: 43vw;
+    max-width: 25vw;
+    margin:1vw;
+    padding: 1vw;
+    border: 2px solid;
+}
+
+.cards .card-body{
+    overflow: auto;
+    
+}
+
+.card-title{
+    text-align: center;
+    
+}
+
+.precio{
+font-weight: bold;
+font-family: 'Pattaya', sans-serif;
+padding-top: 1vw;
+}
+
+.stock{
+    padding-top: 1vw;
+    font-weight: bold;
+    font-family: 'Pattaya', sans-serif;
+}
+
+
+
+.card-price{
+    display: flex;
+    justify-content: space-between;
+}
+
+.boton-comprar{
+    padding: 1vw;
+    align-self: center;
+  
+}
+
+.boton-comprar button{
+    background-color: black;
+}
+
+.boton-comprar button:hover{
+    box-shadow: -1px 15px 10px grey ;
+    
+}
+/*Footer*/
+
+footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 5vw;
+   
+}
+
+
+
+footer div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(131, 128, 128, 0.5) ;
+    width: 50vw;
+}
+
+footer div button{
+    border: none;
+}
+
+footer p{
+    font-family: 'Pattaya', sans-serif;
+    font-size: 1vw;
+    font-weight: bold;
+    margin-top: 1vw;
+}
+
+footer img{
+    width: 4vw;
+}
+>>>>>>> 8b59077669d432b0d9fffe2a1e2d213d6b70eecb
