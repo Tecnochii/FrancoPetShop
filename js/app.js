@@ -24,7 +24,12 @@ const app = {
 
     },
     mounted() {
-
+        if (localStorage.getItem("carrito")) {
+            this.cart = JSON.parse(localStorage.getItem("carrito"))
+        }
+        if (localStorage.getItem("stock")) {
+            this.medicamento.stock = JSON.parse(localStorage.getItem("stock"))
+        }
 
     },
     methods: {
@@ -84,7 +89,7 @@ const app = {
                 if (articulos.stock > 0) {
                     articulos.stock -= 1
                     console.log(this.cart)
-                    localStorage.setItem("Carrito", JSON.stringify(this.cart))
+                    localStorage.setItem("carrito", JSON.stringify(this.cart))
                 }
 
 
@@ -129,13 +134,22 @@ const app = {
 
                 if (this.medicamento[articuloFiltrado].stock > 0) {
                     this.medicamento[articuloFiltrado].stock -= 1
-                    console.log(this.cart)
-                    localStorage.setItem("Carrito", JSON.stringify(this.cart))
+                    localStorage.setItem("stock", JSON.stringify(this.medicamento[articuloFiltrado].stock))
+                    localStorage.setItem("carrito", JSON.stringify(this.cart))
                 }
 
-
+                this.cart = JSON.parse(localStorage.getItem("carrito"))
+                this.medicamento.stock = JSON.parse(localStorage.getItem("stock"))
             }
 
+
+        },
+        remover(art) {
+            let carrito = JSON.parse(localStorage.getItem("carrito"))
+
+            let c = carrito.findIndex(e => e.id == art.id)
+
+            localStorage.clear()
 
         },
 
@@ -167,7 +181,7 @@ const app = {
             return contador
         },
         contadorDePrecio() {
-            arrAux = this.CarritoStorage.map(e => e.precio)
+            arrAux = this.cart.map(e => e.precio)
             contador = 0
             for (let i = 0; i < arrAux.length; i++) {
                 contador += arrAux[i]
@@ -175,19 +189,7 @@ const app = {
             return contador
         },
 
-        CarritoStorage() {
 
-
-            let Carrito = JSON.parse(localStorage.getItem("Carrito"))
-
-            if (Carrito == null) {
-                return Carrito = []
-            } else {
-                return Carrito
-            }
-
-
-        },
     },
 }
 

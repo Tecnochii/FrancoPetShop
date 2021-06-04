@@ -44,9 +44,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <h6>Articullos Deseados:</h6>
-                                        <div v-for="art in CarritoStorage">
+                                        <div v-for="art in cart">
                                             <div><img :src="art.imagen" alt="">{{art.nombre}}
-                                                x{{art.cantidad}} ${{art.precio * art.cantidad}} X</div>
+                                                x{{art.cantidad}} ${{art.precio * art.cantidad}} <button
+                                                    @click="remover(art)" class="removerCompra">X</button></div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -66,8 +67,8 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <H2>Click en el boton</H2>
-                                        <h3>Para realizar el pago</h3>
+                                        <H2>Total</H2>
+                                        <h3>${{contadorDePrecio}}</h3>
                                         <a @click="Pagado" class="checkout" href="#" role="button">Realizar
                                             Pago</a>
                                     </div>
