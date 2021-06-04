@@ -38,7 +38,7 @@ const app = {
 
         },
         Pagado() {
-            swal("PagoRecibido!", "Gracias por su compra!", "success");
+            swal("Pago Recibido!", "Gracias por su compra!", "success");
         },
 
         // updateVariant(index) {
