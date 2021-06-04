@@ -10,6 +10,8 @@ a{
 a:hover{
     color: white;
 }
+
+
 /*Header*/
 header{
     display: flex;
@@ -174,3 +176,93 @@ footer p{
 footer img{
     width: 4vw;
 }
+
+/*Modal*/
+.btn-primary {
+    background-color: black;
+    border: none;
+
+}
+.btn-primary:hover {
+background-color: black;
+}
+
+.modal {
+    position: fixed;
+     top: 0; 
+     left: 0; 
+    z-index: 1060;
+    display: none;
+   
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.modal-content {
+   position: fixed;
+border: none;
+background-color: rgb(0, 0, 0, 0.8)!important;
+color: white;
+height: 80vh;
+width: 50vw;
+overflow: auto;
+}
+
+.modal-content div img{
+    max-width:4vw;
+    
+}
+
+.modal-header{
+    border: none;
+
+}
+
+.removerCompra{
+    width: 2vw;
+    background-color: black;
+    color: white;
+    
+}
+
+.modal-body h2, h3{
+    text-align: center;
+    margin-bottom: 2vw;
+}
+
+.modal-body img{
+    width: 5vw;
+    margin-right: 1vw;
+    margin-top: 1vh;
+}
+.modal-body{
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding:0 4vw;
+}
+
+.modal-body .checkout{
+    align-self: center;
+}
+
+.modal-body a{
+   padding: 2vw;
+   font-size: 20px;
+   background-color: black;
+}
+
+.modal-body a:hover{
+    background-color: grey;
+}
+
+.modal-footer{
+    border: none;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus{
+    background-color: black!important;
+    border: none!important;
+    box-shadow: none;
+}
+

@@ -1,3 +1,5 @@
+
+
 const app = {
     data() {
         return {
@@ -5,39 +7,7 @@ const app = {
             juguete: [],
             medicamento: [],
             cart: [],
-            indexSeleccionado: 0,
-            id: [],
-        }
-    },
-    methods: {
-        AlertaSubmit() {
-            alert("Los datos se enviarion correctamente, en breve nos estaremos cotactando con usted. Gracias por escribirnos!");
-
-        },
-        // updateVariant(index) {
-        //     this.indexSeleccionado = index
-        //     console.log(index)
-        // },
-        agregarAlCarrito() {
-            let jugueteria = document.getElementById("juguetes")
-            let medicamento = document.getElementById("medicamentos")
-            if (jugueteria) {
-                this.cart.push(this.juguete)
-            } else if (medicamento) {
-                this.cart.push(this.medicamento)
-            }
-            console.log(this.cart)
-        },
-
-    },
-    mounted() {
-        if (localStorage.name) {
-            this.name = localStorage.name;
-        }
-    },
-    watch: {
-        name(newName) {
-            localStorage.name = newName;
+            contador: 0
         }
     },
     created() {
@@ -51,14 +21,175 @@ const app = {
                 console.log(this.medicamento)
                 console.log(this.indexSeleccionado)
             })
+
+    },
+    mounted() {
+
+
+    },
+    methods: {
+        AlertaSubmit() {
+            swal("Los datos se enviarion correctamente, en breve nos estaremos cotactando con usted. Gracias por escribirnos!");
+
+        },
+        Pagado() {
+            swal("PagoRecibido!", "Gracias por su compra!", "success");
+        },
+
+        // updateVariant(index) {
+        //     this.indexSeleccionado = index
+        //     console.log(index)
+        // },
+        agregarAlCarrito(articulos) {
+            let jugueteria = document.getElementById("juguetes")
+            let Farmacia = document.getElementById("medicamentos")
+
+
+            if (jugueteria) {
+
+                var JugueteFiltrado = this.medicamento.findIndex(e => e._id == articulos._id)
+
+                let arrAux = this.cart.map(e => e.id)
+
+
+
+                if (this.cart.length < 1) {
+                    this.cart.push({
+                        nombre: articulos.nombre,
+                        cantidad: 1,
+                        precio: articulos.precio,
+                        imagen: articulos.imagen,
+                        id: articulos._id
+                    })
+                } else if (!arrAux.includes(articulos._id)) {
+                    console.log("hola")
+
+                    this.cart.push({
+                        nombre: articulos.nombre,
+                        cantidad: 1,
+                        precio: articulos.precio,
+                        imagen: articulos.imagen,
+                        id: articulos._id
+                    })
+
+                } else {
+                    this.cart.map(e => {
+                        if (e.id == articulos._id) {
+                            e.cantidad++
+                        }
+                    })
+
+                }
+
+                if (articulos.stock > 0) {
+                    articulos.stock -= 1
+                    console.log(this.cart)
+                    localStorage.setItem("Carrito", JSON.stringify(this.cart))
+                }
+
+
+
+
+
+            } else if (Farmacia) {
+                var articuloFiltrado = this.medicamento.findIndex(e => e._id == articulos._id)
+
+                let arrAux = this.cart.map(e => e.id)
+
+
+
+                if (this.cart.length < 1) {
+                    this.cart.push({
+                        nombre: articulos.nombre,
+                        cantidad: 1,
+                        precio: articulos.precio,
+                        imagen: articulos.imagen,
+                        id: articulos._id
+                    })
+                } else if (!arrAux.includes(articulos._id)) {
+                    console.log("hola")
+
+                    this.cart.push({
+                        nombre: articulos.nombre,
+                        cantidad: 1,
+                        precio: articulos.precio,
+                        imagen: articulos.imagen,
+                        id: articulos._id
+                    })
+
+                } else {
+
+                    this.cart.map(e => {
+                        if (e.id == this.medicamento[articuloFiltrado]._id) {
+                            e.cantidad++
+                        }
+                    })
+
+                }
+
+                if (this.medicamento[articuloFiltrado].stock > 0) {
+                    this.medicamento[articuloFiltrado].stock -= 1
+                    console.log(this.cart)
+                    localStorage.setItem("Carrito", JSON.stringify(this.cart))
+                }
+
+
+            }
+
+
+        },
+
+    },
+
+    created() {
+        fetch("https://apipetshop.herokuapp.com/api/articulos")
+            .then(res => res.json())
+            .then(data => {
+
+                this.articulos = data.response
+                this.juguete = data.response.filter(e => e.tipo == "Juguete")
+                this.medicamento = data.response.filter(e => e.tipo == "Medicamento")
+
+            })
+
     },
     computed: {
         cantidadMedicamentos() {
             console.log(this.indexSeleccionado)
             return this.medicamento[this.indexSeleccionado].stock
-        }
+        },
+        contadorCarrito() {
+            arrAux = this.cart.map(e => e.cantidad)
+            let contador = 0
+            for (let i = 0; i < arrAux.length; i++) {
+                contador += arrAux[i]
+            }
+            return contador
+        },
+        contadorDePrecio() {
+            arrAux = this.CarritoStorage.map(e => e.precio)
+            contador = 0
+            for (let i = 0; i < arrAux.length; i++) {
+                contador += arrAux[i]
+            }
+            return contador
+        },
 
-    }
+        CarritoStorage() {
+
+
+            let Carrito = JSON.parse(localStorage.getItem("Carrito"))
+
+            if (Carrito == null) {
+                return Carrito = []
+            } else {
+                return Carrito
+            }
+
+
+        },
+    },
 }
+
 
 Vue.createApp(app).mount('#app')
