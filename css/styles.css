@@ -11,6 +11,9 @@ a:hover{
     color: white;
 }
 
+#wrapper{
+    height: 93.5vh;
+}
 
 /*Header*/
 header{
@@ -149,7 +152,7 @@ footer{
     display: flex;
     justify-content: center;
     margin-top: 5vw;
-   
+    
 }
 
 

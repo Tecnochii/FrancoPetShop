@@ -1,5 +1,3 @@
-
-
 const app = {
     data() {
         return {
@@ -39,6 +37,8 @@ const app = {
         },
         Pagado() {
             swal("Pago Recibido!", "Gracias por su compra!", "success");
+            localStorage.clear()
+            this.cart.splice(0, this.cart.length)
         },
 
         // updateVariant(index) {
@@ -146,27 +146,20 @@ const app = {
         },
         remover(art) {
             let carrito = JSON.parse(localStorage.getItem("carrito"))
-
-            let c = carrito.findIndex(e => e.id == art.id)
-
-            localStorage.clear()
+            let index = carrito.findIndex(e => e.id == art.id)
+            localStorage.removeItem("carrito", index)
+            localStorage.removeItem("stock", index)
+            this.cart.splice(index, 1)
 
         },
-
+        vaciarCarrito() {
+            localStorage.removeItem("carrito")
+            localStorage.removeItem("stock")
+            this.cart.splice(0, this.cart.length)
+        }
     },
 
-    created() {
-        fetch("https://apipetshop.herokuapp.com/api/articulos")
-            .then(res => res.json())
-            .then(data => {
 
-                this.articulos = data.response
-                this.juguete = data.response.filter(e => e.tipo == "Juguete")
-                this.medicamento = data.response.filter(e => e.tipo == "Medicamento")
-
-            })
-
-    },
     computed: {
         cantidadMedicamentos() {
             console.log(this.indexSeleccionado)
@@ -181,15 +174,15 @@ const app = {
             return contador
         },
         contadorDePrecio() {
-            arrAux = this.cart.map(e => e.precio)
+            arrAuxCant = this.cart.map(e => e.cantidad * e.precio)
+
             contador = 0
-            for (let i = 0; i < arrAux.length; i++) {
-                contador += arrAux[i]
+            for (let i = 0; i < arrAuxCant.length; i++) {
+                contador += arrAuxCant[i]
             }
+
             return contador
         },
-
-
     },
 }
 

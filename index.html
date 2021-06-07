@@ -18,49 +18,104 @@
 </head>
 
 <body>
-    <div id="app">
-        <div>
+    <div id="wrapper">
+        <div id="app">
+            <div>
 
-            <div class="container">
-                <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                    <a href="index.html"
-                        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
-                        <img src="img/logo.svg" alt="">
-                        <span class="fs-4">Franco PetShop</span>
-                    </a>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item"><a href="index.html" class="nav-link active mx-3"
-                                aria-current="page">Inicio</a>
-                        </li>
-                        <li class="nav-item "><a href="juguetes.html" class="nav-link active"
-                                aria-current="page">Juguetes</a>
-                        </li>
-                        <li class="nav-item "><a href="farmacia.html" class="nav-link active mx-3"
-                                aria-current="page">Farmacia</a>
-                        </li>
-                    </ul>
-                </header>
-            </div>
-        </div>
-        <main>
-            <div class="position-relative overflow-hidden  p-md-5 m-md-3 text-center bg-light ">
-                <div class="col-md-5 p-lg-5 mx-auto  ">
-                    <h1 class="display-6 fw-normal">Bienvenidos a mi tienda</h1>
-                    <p class="lead fw-normal">Somos una PetShop especializada en Juguetes y Articulos Veterinarios</p>
-                    <p>Haga Click en el Boton para Contactarnos</p>
-                    <a class="btn btn-outline-secondary" href="form.html">Contactar</a>
+                <div class="container">
+                    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                        <a href="index.html"
+                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                            <svg class="bi me-2" width="40" height="32">
+                                <use xlink:href="#bootstrap"></use>
+                            </svg>
+                            <img src="img/logo.svg" alt="">
+                            <span class="fs-4">Franco PetShop</span>
+                        </a>
+                        <ul class="nav nav-pills">
+                            <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalToggleLabel">Carrito de Compras</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6>Articullos Deseados:</h6>
+                                            <div v-for="art in cart">
+                                                <div>
+                                                    <img :src="art.imagen" alt="">{{art.nombre}}
+                                                    x{{art.cantidad}} ${{art.precio * art.cantidad}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button @click="vaciarCarrito" class="btn btn-primary">Vaciar
+                                                Carrito</button>
+                                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
+                                                data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                                aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalToggleLabel2">Finalizar Compra</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <H2 class="checkout">Total</H2>
+                                            <h3 class="checkout">${{contadorDePrecio}}</h3>
+                                            <a @click="Pagado" class="checkout" href="#" role="button">Realizar
+                                                Pago</a>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary" data-bs-target="#exampleModalToggle"
+                                                data-bs-toggle="modal" data-bs-dismiss="modal">Volver</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
+                                role="button">&#128722({{contadorCarrito}})</a>
+                            <li class="nav-item"><a href="index.html" class="nav-link active mx-3"
+                                    aria-current="page">Inicio</a>
+                            </li>
+                            <li class="nav-item "><a href="juguetes.html" class="nav-link active"
+                                    aria-current="page">Juguetes</a>
+                            </li>
+                            <li class="nav-item "><a href="farmacia.html" class="nav-link active mx-3"
+                                    aria-current="page">Farmacia</a>
+                            </li>
+                        </ul>
+                    </header>
                 </div>
-                <div class="product-device shadow-sm d-none d-md-block"></div>
-                <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
             </div>
+            <main>
+                <div class="position-relative overflow-hidden  p-md-5 m-md-3 text-center bg-light ">
+                    <div class="col-md-5 p-lg-5 mx-auto  ">
+                        <h1 class="display-6 fw-normal">Bienvenidos a mi tienda</h1>
+                        <p class="lead fw-normal">Somos una PetShop especializada en Juguetes y Articulos Veterinarios
+                        </p>
+                        <p>Haga Click en el Boton para Contactarnos</p>
+                        <a class="btn btn-outline-secondary" href="form.html">Contactar</a>
+                    </div>
+                    <div class="product-device shadow-sm d-none d-md-block"></div>
+                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+                </div>
 
-            <div class="fotoIndex">
-                <img src="https://s14418.pcdn.co/es/wp-content/uploads/2018/03/perros.png" alt="">
-            </div>
-        </main>
+                <div class="fotoIndex">
+                    <img src="https://s14418.pcdn.co/es/wp-content/uploads/2018/03/perros.png" alt="">
+                </div>
+            </main>
+        </div>
     </div>
     <footer>
         <div>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
-    <title>Farmacia ! Franco PetShop</title>
+    <title>Farmacia | Franco PetShop</title>
     <!-- Boostrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -45,12 +45,14 @@
                                     <div class="modal-body">
                                         <h6>Articullos Deseados:</h6>
                                         <div v-for="art in cart">
-                                            <div><img :src="art.imagen" alt="">{{art.nombre}}
-                                                x{{art.cantidad}} ${{art.precio * art.cantidad}} <button
-                                                    @click="remover(art)" class="removerCompra">X</button></div>
+                                            <div>
+                                                <img :src="art.imagen" alt="">{{art.nombre}}
+                                                x{{art.cantidad}} ${{art.precio * art.cantidad}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <button @click="vaciarCarrito" class="btn btn-primary">Vaciar Carrito</button>
                                         <button class="btn btn-primary" data-bs-target="#exampleModalToggle2"
                                             data-bs-toggle="modal" data-bs-dismiss="modal">Siguiente</button>
                                     </div>
