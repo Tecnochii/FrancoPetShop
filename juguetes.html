@@ -49,6 +49,10 @@
                                                 <img :src="art.imagen" alt="">{{art.nombre}}
                                                 x{{art.cantidad}} ${{art.precio * art.cantidad}}
                                             </div>
+                                            <div>
+                                                <button type="button" class="btn-remover" @click="remover(art)">
+                                                    x</button>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">

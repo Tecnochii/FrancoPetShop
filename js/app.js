@@ -16,8 +16,7 @@ const app = {
                 this.articulos = data.response
                 this.juguete = data.response.filter(e => e.tipo == "Juguete")
                 this.medicamento = data.response.filter(e => e.tipo == "Medicamento")
-                console.log(this.medicamento)
-                console.log(this.indexSeleccionado)
+
             })
 
     },
@@ -25,9 +24,7 @@ const app = {
         if (localStorage.getItem("carrito")) {
             this.cart = JSON.parse(localStorage.getItem("carrito"))
         }
-        // if (localStorage.getItem("stock")) {
-        //     this.medicamento.stock = JSON.parse(localStorage.getItem("stock"))
-        // }
+
 
     },
     methods: {
@@ -41,10 +38,6 @@ const app = {
             this.cart.splice(0, this.cart.length)
         },
 
-        // updateVariant(index) {
-        //     this.indexSeleccionado = index
-        //     console.log(index)
-        // },
         agregarAlCarrito(articulo) {
             let jugueteria = document.getElementById("juguetes")
             let Farmacia = document.getElementById("medicamentos")
@@ -84,7 +77,6 @@ const app = {
 
                 if (articulo.stock > 0) {
                     articulo.stock -= 1
-                    console.log(this.cart)
                     localStorage.setItem("carrito", JSON.stringify(this.cart))
                 }
 
