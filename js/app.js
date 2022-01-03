@@ -25,9 +25,9 @@ const app = {
         if (localStorage.getItem("carrito")) {
             this.cart = JSON.parse(localStorage.getItem("carrito"))
         }
-        if (localStorage.getItem("stock")) {
-            this.medicamento.stock = JSON.parse(localStorage.getItem("stock"))
-        }
+        // if (localStorage.getItem("stock")) {
+        //     this.medicamento.stock = JSON.parse(localStorage.getItem("stock"))
+        // }
 
     },
     methods: {
@@ -45,49 +45,45 @@ const app = {
         //     this.indexSeleccionado = index
         //     console.log(index)
         // },
-        agregarAlCarrito(articulos) {
+        agregarAlCarrito(articulo) {
             let jugueteria = document.getElementById("juguetes")
             let Farmacia = document.getElementById("medicamentos")
 
 
             if (jugueteria) {
 
-                var JugueteFiltrado = this.medicamento.findIndex(e => e._id == articulos._id)
-
-                let arrAux = this.cart.map(e => e.id)
-
-
+                let juguetesIdInCart = this.cart.map(juguete => juguete.id)
 
                 if (this.cart.length < 1) {
                     this.cart.push({
-                        nombre: articulos.nombre,
+                        nombre: articulo.nombre,
                         cantidad: 1,
-                        precio: articulos.precio,
-                        imagen: articulos.imagen,
-                        id: articulos._id
+                        precio: articulo.precio,
+                        imagen: articulo.imagen,
+                        id: articulo._id
                     })
-                } else if (!arrAux.includes(articulos._id)) {
-                    console.log("hola")
+                } else if (!juguetesIdInCart.includes(articulo._id)) {
+                    console.log("No lo incluye")
 
                     this.cart.push({
-                        nombre: articulos.nombre,
+                        nombre: articulo.nombre,
                         cantidad: 1,
-                        precio: articulos.precio,
-                        imagen: articulos.imagen,
-                        id: articulos._id
+                        precio: articulo.precio,
+                        imagen: articulo.imagen,
+                        id: articulo._id
                     })
 
                 } else {
-                    this.cart.map(e => {
-                        if (e.id == articulos._id) {
-                            e.cantidad++
+                    this.cart.map(juguete => {
+                        if (juguete.id == articulo._id) {
+                            juguete.cantidad++
                         }
                     })
 
                 }
 
-                if (articulos.stock > 0) {
-                    articulos.stock -= 1
+                if (articulo.stock > 0) {
+                    articulo.stock -= 1
                     console.log(this.cart)
                     localStorage.setItem("carrito", JSON.stringify(this.cart))
                 }
@@ -97,84 +93,74 @@ const app = {
 
 
             } else if (Farmacia) {
-                var articuloFiltrado = this.medicamento.findIndex(e => e._id == articulos._id)
 
-                let arrAux = this.cart.map(e => e.id)
-
-
+                let medicamentosIdInCart = this.cart.map(articulo => articulo.id)
 
                 if (this.cart.length < 1) {
                     this.cart.push({
-                        nombre: articulos.nombre,
+                        nombre: articulo.nombre,
                         cantidad: 1,
-                        precio: articulos.precio,
-                        imagen: articulos.imagen,
-                        id: articulos._id
+                        precio: articulo.precio,
+                        imagen: articulo.imagen,
+                        id: articulo._id
                     })
-                } else if (!arrAux.includes(articulos._id)) {
-                    console.log("hola")
+                } else if (!medicamentosIdInCart.includes(articulo._id)) {
+                    console.log("No lo incluye")
 
                     this.cart.push({
-                        nombre: articulos.nombre,
+                        nombre: articulo.nombre,
                         cantidad: 1,
-                        precio: articulos.precio,
-                        imagen: articulos.imagen,
-                        id: articulos._id
+                        precio: articulo.precio,
+                        imagen: articulo.imagen,
+                        id: articulo._id
                     })
 
                 } else {
 
                     this.cart.map(e => {
-                        if (e.id == this.medicamento[articuloFiltrado]._id) {
+                        if (e.id == articulo._id) {
                             e.cantidad++
                         }
                     })
 
                 }
 
-                if (this.medicamento[articuloFiltrado].stock > 0) {
-                    this.medicamento[articuloFiltrado].stock -= 1
-                    localStorage.setItem("stock", JSON.stringify(this.medicamento[articuloFiltrado].stock))
+                if (articulo.stock > 0) {
+                    articulo.stock -= 1
                     localStorage.setItem("carrito", JSON.stringify(this.cart))
                 }
 
-                this.cart = JSON.parse(localStorage.getItem("carrito"))
-                this.medicamento.stock = JSON.parse(localStorage.getItem("stock"))
+
             }
 
 
         },
         remover(art) {
-            let carrito = JSON.parse(localStorage.getItem("carrito"))
-            let index = carrito.findIndex(e => e.id == art.id)
-            localStorage.removeItem("carrito", index)
-            localStorage.removeItem("stock", index)
-            this.cart.splice(index, 1)
+            let cart = this.cart.filter(articulo => articulo != art)
 
+            localStorage.setItem("carrito", JSON.stringify(cart))
+
+            this.cart = cart
         },
         vaciarCarrito() {
             localStorage.removeItem("carrito")
-            localStorage.removeItem("stock")
-            this.cart.splice(0, this.cart.length)
+            this.cart = []
         }
     },
 
 
     computed: {
-        cantidadMedicamentos() {
-            console.log(this.indexSeleccionado)
-            return this.medicamento[this.indexSeleccionado].stock
-        },
+
         contadorCarrito() {
-            arrAux = this.cart.map(e => e.cantidad)
+            let cantidades = this.cart.map(articulo => articulo.cantidad)
             let contador = 0
-            for (let i = 0; i < arrAux.length; i++) {
-                contador += arrAux[i]
+            for (let i = 0; i < cantidades.length; i++) {
+                contador += cantidades[i]
             }
             return contador
         },
         contadorDePrecio() {
-            arrAuxCant = this.cart.map(e => e.cantidad * e.precio)
+            arrAuxCant = this.cart.map(articulo => articulo.cantidad * articulo.precio)
 
             contador = 0
             for (let i = 0; i < arrAuxCant.length; i++) {

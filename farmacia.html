@@ -44,10 +44,15 @@
                                     </div>
                                     <div class="modal-body">
                                         <h6>Articullos Deseados:</h6>
-                                        <div v-for="art in cart">
+                                        <div v-for="art in cart"
+                                            class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <img :src="art.imagen" alt="">{{art.nombre}}
                                                 x{{art.cantidad}} ${{art.precio * art.cantidad}}
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn-remover" @click="remover(art)">
+                                                    x</button>
                                             </div>
                                         </div>
                                     </div>

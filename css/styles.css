@@ -79,6 +79,7 @@ min-height: 80vh;
 .cards img{
     max-width: 100vw;
     height: 40vh;
+    object-fit: contain;
 }
 
 .cards p{
@@ -267,5 +268,16 @@ padding:0 4vw;
     background-color: black!important;
     border: none!important;
     box-shadow: none;
+}
+
+button.btn-remover{
+    color: white;
+    background-color:black;
+    border: none;
+    border-radius: 15%;
+    font-size: larger;
+    font-weight: bold;
+    padding: 0.01rem 0.5rem!important;
+
 }
 
